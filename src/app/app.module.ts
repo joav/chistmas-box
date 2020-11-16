@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +15,7 @@ import { AccessBoxComponent } from './access-box/access-box.component';
 import { BoxComponent } from './box/box.component';
 import { WishComponent } from './wish/wish.component';
 import { SuccessWishComponent } from './success-wish/success-wish.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,12 @@ import { SuccessWishComponent } from './success-wish/success-wish.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+	AngularFirestoreModule,
+	AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
