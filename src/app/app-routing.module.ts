@@ -11,31 +11,31 @@ import { WishComponent } from 'src/app/wish/wish.component';
 
 const routes: Routes = [
     {
-        path: "/",
+        path: "",
         component: HomeComponent
     },
     {
-        path: "/crear",
+        path: "crear",
         component: CreateBoxComponent
     },
     {
-        path: "/exito-creacion",
+        path: "exito-creacion",
         component: SuccessCreateComponent
     },
     {
-        path: "/buzon/:id",
+        path: "buzon/:id",
         component: BoxComponent
     },
     {
-        path: "/acceder",
+        path: "acceder",
         component: AccessBoxComponent
     },
     {
-        path: "/deseo",
+        path: "deseo",
         component: SuccessWishComponent
     },
     {
-        path: "/:id",
+        path: ":id",
         component: WishComponent
     }
 ];
