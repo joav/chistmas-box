@@ -8,6 +8,12 @@ import { WalletComponent } from './wallet/wallet.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { PersonsComponent } from './persons/persons.component';
 import { LoansComponent } from './loans/loans.component';
+import { CreateBoxComponent } from './create-box/create-box.component';
+import { SuccessCreateComponent } from './success-create/success-create.component';
+import { AccessBoxComponent } from './access-box/access-box.component';
+import { BoxComponent } from './box/box.component';
+import { WishComponent } from './wish/wish.component';
+import { SuccessWishComponent } from './success-wish/success-wish.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { LoansComponent } from './loans/loans.component';
     WalletComponent,
     TransactionComponent,
     PersonsComponent,
-    LoansComponent
+    LoansComponent,
+    CreateBoxComponent,
+    SuccessCreateComponent,
+    AccessBoxComponent,
+    BoxComponent,
+    WishComponent,
+    SuccessWishComponent
   ],
   imports: [
     BrowserModule,
