@@ -16,10 +16,10 @@ export class BoxService {
       const code = this.generateUID();
       box.code = code;
       return new Observable(subs => {
-        this.auth.auth
+        this.auth
         .createUserWithEmailAndPassword(`${code}@christmas-box.web.app`, box.password)
         .then(u => {
-            this.auth.auth.signInWithEmailAndPassword(`${code}@christmas-box.web.app`, box.password)
+            this.auth.signInWithEmailAndPassword(`${code}@christmas-box.web.app`, box.password)
             .then(authU => {
                 this.db.doc(`boxes/${u.user.uid}`).set(box, {merge: true})
                 .subscribe(() => {
