@@ -2,8 +2,10 @@
     <h1>Buzón creado</h1>
     <p>Tu buzón ha sido creado.</p>
     <p>Este es el código de tu buzón, recuerdalo para revisar los deseos de tus amigos:</p>
-    <span class="code">h5j7x</span>
-    <p>Ahora puedes compartir tu buzón copiando el siguiente link:</p>
-    <p><a href="#" class="link copy">christmas-box.webapp.com/h5j7x</a>
-    <button class="btn">Compartir</button>
+    <span class="code">{{boxService.currentBoxCode}}</span>
+	<p>Ahora puedes compartir tu buzón copiando el siguiente link:</p>
+	<p><input #link type="text" [value]="'https://christmas-box.web.app/' + boxService.currentBoxCode"><button class="btn" (click)="copy(link)">Copiar</button></p>
+	<div class="actions">
+		<a class="link" routerLink="/buzon/{{boxService.currentBoxCode}}">Ir a tu buzón</a> <button class="btn" (click)="share()">Compartir</button>
+	</div>
 </div>

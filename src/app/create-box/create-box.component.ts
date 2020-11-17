@@ -25,7 +25,7 @@ export class CreateBoxComponent implements OnInit {
     get name() { return this.form.get('name'); }
     get msg() { return this.form.get('msg'); }
     get password() { return this.form.get('password'); }
-    
+
     ngOnInit() {
     }
 
@@ -33,6 +33,7 @@ export class CreateBoxComponent implements OnInit {
         if(this.form.valid){
             this.boxService.createBox(this.form.value)
             .subscribe(code => {
+				this.boxService.saveBoxCode(code);
                 this.router.navigate([`/exito-creacion`]);
             }, e => e);
         }
