@@ -13,16 +13,16 @@ export class BoxOwnerGuard implements CanActivate {
 		next: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 		return new Promise((resolve) => {
-			this.auth.onAuthStateChanged(user => {
+			const uns = this.auth.onAuthStateChanged(user => {
 				if(user && this.boxService.currentBoxCode && user.email.includes(this.boxService.currentBoxCode)){
 					resolve(true);
 				}else{
 					this.router.navigate(['/acceder']);
 					resolve(false);
 				}
-			})
-			.then(u => {
-				u();
+				uns.then(u => {
+					u()
+				});
 			});
 		});
 	}
