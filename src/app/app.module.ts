@@ -14,7 +14,7 @@ import { AccessBoxComponent } from './access-box/access-box.component';
 import { BoxComponent } from './box/box.component';
 import { WishComponent } from './wish/wish.component';
 import { SuccessWishComponent } from './success-wish/success-wish.component';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
