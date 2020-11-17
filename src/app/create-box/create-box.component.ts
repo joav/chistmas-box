@@ -31,8 +31,8 @@ export class CreateBoxComponent implements OnInit {
 
     onSubmit() {
         if(this.form.valid){
-            this.boxService(this.form.value)
-            .then(code => {
+            this.boxService.createBox(this.form.value)
+            .subscribe(code => {
                 this.router.navigate([`/exito-creacion`]);
             }, e => e);
         }
