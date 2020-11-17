@@ -22,9 +22,10 @@ export class BoxService {
             this.auth.signInWithEmailAndPassword(`${code}@christmas-box.web.app`, box.password)
             .then(authU => {
                 this.db.doc(`boxes/${u.user.uid}`).set(box, {merge: true})
-                .subscribe(() => {
-                   subs.complete(); 
-                }, e => subs.error(e));
+                .then(() => {
+                   subs.complete(code); 
+                })
+                .catch(e => subs.error(e));
             })
             .catch(e => subs.error(e));
         })
