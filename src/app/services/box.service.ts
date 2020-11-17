@@ -23,7 +23,8 @@ export class BoxService {
             .then(authU => {
                 this.db.doc(`boxes/${u.user.uid}`).set(box, {merge: true})
                 .then(() => {
-                   subs.complete(code); 
+                   subs.next(code);
+                   subs.complete();
                 })
                 .catch(e => subs.error(e));
             })
