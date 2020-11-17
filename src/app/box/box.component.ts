@@ -16,7 +16,7 @@ export class BoxComponent implements OnInit {
 	};
 	wishes: Wish[] = [];
 
-	constructor(private boxService: BoxService) {
+	constructor(public boxService: BoxService) {
 		this.boxService.getOwnBox()
 		.subscribe(box => this.box = box);
 		this.boxService.getWishes()
