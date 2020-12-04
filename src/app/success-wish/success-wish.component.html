@@ -1,7 +1,9 @@
 <div class="content">
     <h1>Deseos enviados</h1>
-    <p>Tus desesos se han enviado al buzón de Jimmy Acero</p>
-    <p>Ahora puedes compartirlo copiando el siguiente link:</p>
-    <p><a href="#" class="link copy" >christmas-box.webapp.com/h5j7x</a></p>
-    <div class="actions"><a class="link" routerLink="/crear">Crear tu buzón</a><button class="btn">Compartir</button></div>
+	<p>Tus desesos se han enviado al buzón de {{box.name}}</p>
+	<p>Ahora puedes compartirlo copiando el siguiente link:</p>
+	<p><input #link type="text" [value]="'https://christmas-box.web.app/' + box.code"><button class="btn" (click)="copy(link)">Copiar</button></p>
+	<div class="actions">
+		<a class="link" routerLink="/buzon/{{box.code}}" *ngIf="owner; else create">Ir a tu buzón</a> <ng-template #create><button class="btn" routerLink="/crear">Crea tu buzón</button></ng-template> <button class="btn" (click)="share()">Compartir</button> <button class="btn" routerLink="/{{box.code}}">Pedir otro deseo</button>
+	</div>
 </div>

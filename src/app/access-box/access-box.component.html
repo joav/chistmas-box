@@ -1,8 +1,11 @@
 <div class="content">
     <h1>Accede a tu buzón</h1>
-    <form>
-        <p><input placeholder="Código de tu buzón" /></p>
-        <p><input placeholder="Contraseña de tu buzón" type="password" /></p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<p><input formControlName="code" placeholder="Código de tu buzón" (blur)="code.markAsTouched()" autocomplete="off" /></p>
+		<div class="error" *ngIf="code.hasError('required') && (validated || code.touched)">Debes ingresar el código de tu buzón</div>
+        <p><input formControlName="password" placeholder="Contraseña de tu buzón" type="password" (blur)="password.markAsTouched()" autocomplete="off" /></p>
+		<div class="error" *ngIf="password.hasError('required') && (validated || password.touched)">Debes ingresar la contraseña de tu buzón</div>
+		<div class="error" *ngIf="error">Datos incorrectos</div>
         <div class="actions"><a class="link" routerLink="/crear">Crear un buzón</a><button class="btn" type="submit">Ingresar</button></div>
     </form>
 </div>

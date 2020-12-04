@@ -3,6 +3,7 @@ export interface Box {
     name: string;
     msg: string;
     code?: string;
-    password?: string;
+	password?: string;
+	id?: string;
 }
 

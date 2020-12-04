@@ -1,12 +1,15 @@
 <div class="content">
-    <button class="btn create" routerLink="/crear">Crea tu buzón</button>
-    <h1>Navidiversión</h1>
-    <p class="info">Buzón de: <span class="author">Jimmy Acero</span></p>
-    <p>Hola querida familia he creado este buzón de navidad para que escriban su carta de deseos al niño dios.</p>
-    <p>Los quiero mucho!!!</p>
-    <form>
-        <p><input placeholder="Tu nombre" /></p>
-        <p><textarea placeholder="Escribe tus deseos aqui!"></textarea></p>
+	<button class="btn create" routerLink="/crear">Crea tu buzón</button>
+	<ng-container *ngIf="box">
+		<h1>{{box.title}}</h1>
+		<p class="info">Buzón de: <span class="author">{{box.name}}</span></p>
+		<div [innerHtml]="msg"></div>
+	</ng-container>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<p><input formControlName="name" placeholder="Tu nombre" (blur)="name.markAsTouched()" /></p>
+		<div class="error" *ngIf="name.hasError('required') && (validated || name.touched)">No olvides tu nombre, este solo lo verá el dueño del buzón.</div>
+        <p><textarea formControlName="wish" placeholder="Escribe tus deseos aqui!" (blur)="wish.markAsTouched()"></textarea></p>
+		<div class="error" *ngIf="wish.hasError('required') && (validated || wish.touched)">No olvides tu deseo, este solo lo verá el dueño del buzón.</div>
         <p><button type="submit">Enviar deseos</button></p>
     </form>
 </div>

@@ -15,6 +15,7 @@ export class BoxService {
 	userLogged = false;
 	isOwner = false;
 	uid = '';
+	lastBoxWish: Box;
 
 	constructor(private db: AngularFirestore, private auth: AngularFireAuth) {
 		this.currentBoxCode = localStorage.getItem('box');
@@ -57,7 +58,7 @@ export class BoxService {
 		return this.db.collection<Box>('boxes', ref => ref.where('code', '==', code).limit(1)).get()
 		.pipe(
 			map(resp => {
-				return resp.docs.length?resp.docs[0].data() as Box:null;
+				return resp.docs.length?{...resp.docs[0].data(), id: resp.docs[0].id} as Box:null;
 			})
 		);
 	}
@@ -82,5 +83,13 @@ export class BoxService {
 		const firstPart = (Math.random() * 46656) | 0;
 		const secondPart = (Math.random() * 46656) | 0;
 		return ("000" + firstPart.toString(36)).slice(-3) + ("000" + secondPart.toString(36)).slice(-3);
+	}
+
+	saveWish(uid: string, wish: Wish) {
+		return this.db.doc(`boxes/${uid}`).collection<Wish>('wishes').add(wish);
+	}
+
+	accessToBox(code: string, password: string) {
+		return this.auth.signInWithEmailAndPassword(`${code}@christmas-box.web.app`, password);
 	}
 }

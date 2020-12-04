@@ -4,8 +4,8 @@
     <h2>Lista de deseos</h2>
     <section>
         <article *ngFor="let wish of wishes">
-            <h4>{{wish.name}}</h4>
-            <p>{{wish.wish}}<p>
+			<h4>{{wish.name}}</h4>
+            <p><small>{{wish.date.toDate() | date: 'y/M/d h:mm a'}}</small><br>{{wish.wish}}<p>
         </article>
     </section>
     <p><button class="btn" routerLink="/{{boxService.currentBoxCode}}">Envia un deseo</button></p>
